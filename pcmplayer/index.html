@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="description" content="pcm player">
+		<meta charset="UTF-8">
+        <title>html5 Audio player</title>
+        <link type="text/css" rel="stylesheet" href="style/style.css">
+    </head>
+    <body>
+        <!--<div id="wrapper">-->
+            <!--<div id="fileWrapper" class="file_wrapper">-->
+                <!--<div id="info">
+                    HTML5 Audio player |can play pcm
+                </div>-->
+                <!--<label for="uploadedFile">Drag&drop or select a file to play:</label>-->
+            <div>
+            	<input type="file" name="1" class="audio" id="uploadedFile" />
+                <div class="yt" name="1">点我播放上面的pcm文件</div>
+            </div>
+            <div>
+            	<input name="2" type="file" class="audio" id="uploadedFile2" />
+                <div class="yt" name="2">点我播放上面的pcm文件</div>
+            </div>    
+            
+            <!--</div>-->
+            <!--<div id="visualizer_wrapper">
+                <canvas id='canvas' width="800" height="350"></canvas>
+            </div>-->
+            
+            
+        <!--</div>-->
+        <!--<audio controls="controls">
+        	<source src="http://global.res.btows.com/monitor/2018/03/26/force-18258585811-701-20180326-152147-1522048907.53562_2.wav"></source>
+        </audio>-->
+        <script type="text/javascript" src="js/html5_audio_visualizer.js"></script>
+        <script>
+            var url = './text.pcm';
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = 'blob';
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    var blob = this.response;
+                    var vsl = new Visualizer();
+                    vsl._prepareAPI();
+                    vsl.file = blob;
+                    vsl.fileName = url;
+                    vsl._start();
+                }
+            }
+            xhr.send();
+        </script>
+    </body>
+</html>

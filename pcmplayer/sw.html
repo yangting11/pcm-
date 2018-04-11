@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="file" id="inputBox" >
+		<img src="" id="img1">
+			<audio controls="controls">
+				<source src="" id="img"></source>
+			</audio>
+		<script type="text/javascript">
+			var inputBox = document.getElementById("inputBox");
+			var img = document.getElementById("img");
+			var img1 = document.getElementById("img1");
+			inputBox.addEventListener("change",function(){
+			  var reader = new FileReader();
+			  reader.readAsBinaryString(inputBox.files[0]);//发起异步请求
+			  reader.onload = function(){
+			    //读取完成后，将结果赋值给img的src
+			    console.log(this.result);
+			    img.src = this.result
+			    img1.src = this.result
+			  }
+			})
+		</script>
+	</body>
+</html>
